@@ -6,10 +6,15 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
+using WorldAPI.DAL;
+using WorldAPI.DAL.Contracts;
+using WorldAPI.DAL.Data;
 
 namespace WorldAPI
 {
@@ -25,7 +30,14 @@ namespace WorldAPI
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddDbContext<WorldDbContext>(options =>
+				options.UseMySql(Configuration.GetConnectionString("MySqlConnection")));
+			services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
 			services.AddControllers();
+			services.AddSwaggerGen(c =>
+			{
+				c.SwaggerDoc("v1", new OpenApiInfo { Title = "World API", Version = "v1" });
+			});
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,6 +46,11 @@ namespace WorldAPI
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
+				app.UseSwagger();
+				app.UseSwaggerUI(c =>
+				{
+					c.SwaggerEndpoint("v1/swagger.json", "World API V1");
+				});
 			}
 
 			app.UseHttpsRedirection();

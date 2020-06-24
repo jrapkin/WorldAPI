@@ -12,9 +12,9 @@ namespace WorldAPI.DAL
 	public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
 	{
 		protected WorldDbContext WorldDbContext { get; set; }
-		public RepositoryBase( DbContext worldDbContext)
+		public RepositoryBase(WorldDbContext worldDbContext)
 		{
-			worldDbContext = WorldDbContext;
+			WorldDbContext = worldDbContext;
 		}
 		public IQueryable<T> FindAll()
 		{
