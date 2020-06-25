@@ -24,14 +24,15 @@ namespace WorldAPI.Controllers
 		}
 
 		[HttpGet]
-		[Route("AllCountries")]
+		[Route("all-countries")]
 		public async Task<IActionResult> AllCountries()
 		{
-			var countries = await _repository.Country.GetAllCountriesAsync();
-			var listOfCountryDTOs = _mapper.Map<IEnumerable<Country>, IEnumerable<CountryDTO>>(countries);
-
-
-			return Ok(listOfCountryDTOs);
+			IEnumerable<Country> countries = await _repository.Country.GetAllCountriesAsync();
+			if (countries == null)
+			{
+				return NotFound();
+			}
+			return Ok(_mapper.Map<IEnumerable<Country>, IEnumerable<CountryDTO>>(countries));
 		}
 	}
 }
