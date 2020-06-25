@@ -35,12 +35,13 @@ namespace WorldAPI
 				options.UseMySql(Configuration.GetConnectionString("MySqlConnection")));
 			services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
 
+			services.AddAutoMapper(typeof(Startup));			
+			services.AddControllers();			
 			services.AddSwaggerGen(c =>
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "World API", Version = "v1" });
-			});
-			services.AddAutoMapper(typeof(Startup));			
-			services.AddControllers();
+			});			
+
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
