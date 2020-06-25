@@ -18,7 +18,7 @@ namespace WorldAPI.DAL.Data
 		public async Task<IEnumerable<Country>> GetAllCountriesAsync()
 		{
 			return await FindAll()
-				.OrderByDescending(c => c.Name)
+				.OrderBy(c => c.Name)
 				.ToListAsync();
 		}
 	}
