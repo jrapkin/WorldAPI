@@ -16,6 +16,7 @@ using Microsoft.OpenApi.Models;
 using WorldAPI.DAL;
 using WorldAPI.DAL.Contracts;
 using WorldAPI.DAL.Data;
+using WorldAPI.DAL.Profiles;
 
 namespace WorldAPI
 {
@@ -29,14 +30,17 @@ namespace WorldAPI
 		public IConfiguration Configuration { get; }
 
 		// This method gets called by the runtime. Use this method to add services to the container.
+
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddDbContext<WorldDbContext>(options =>
 				options.UseMySql(Configuration.GetConnectionString("MySqlConnection")));
 			services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
 
-			services.AddAutoMapper(typeof(Startup));			
-			services.AddControllers();			
+			services.AddAutoMapper(typeof(CountryProfile), typeof(StateProfile), typeof(CityProfile));
+
+
+				services.AddControllers();			
 			services.AddSwaggerGen(c =>
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "World API", Version = "v1" });

@@ -6,6 +6,8 @@ using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WorldAPI.DAL.Contracts;
+using WorldAPI.DAL.DataTransferObjects;
+using WorldAPI.DAL.Models;
 
 namespace WorldAPI.Controllers
 {
@@ -21,5 +23,15 @@ namespace WorldAPI.Controllers
 			_mapper = mapper;
 		}
 
+		[HttpGet]
+		[Route("AllCountries")]
+		public async Task<IActionResult> AllCountries()
+		{
+			var countries = await _repository.Country.GetAllCountriesAsync();
+			var listOfCountryDTOs = _mapper.Map<IEnumerable<Country>, IEnumerable<CountryDTO>>(countries);
+
+
+			return Ok(listOfCountryDTOs);
+		}
 	}
 }
