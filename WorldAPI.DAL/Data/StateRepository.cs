@@ -18,10 +18,16 @@ namespace WorldAPI.DAL.Data
 		public async Task<IEnumerable<State>> GetAllStatesAsync()
 		{
 			return await FindAll()
-				.OrderBy(state => state.Name)
-				.ThenBy(state => state.CountryId)
+				.OrderBy(state => state.CountryId)
+				.ThenBy(state => state.Name)
 				.ToListAsync();
-				
 		}
+		public async Task<IEnumerable<State>> GetStatesInCountryAsync(int? countryId)
+		{
+			return await FindByCondition(states => states.CountryId == countryId)
+				.OrderBy(state => state.Name)
+				.ToListAsync();
+		}
+
 	}
 }
