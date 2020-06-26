@@ -32,7 +32,12 @@ namespace WorldAPI.DAL.Data
         {
             modelBuilder.Entity<City>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(c => c.Id)
+                      .HasName("PrimaryKey_Id");
+                entity.HasOne(c => c.State)
+                      .WithMany(s => s.Cities)
+                      .HasForeignKey(s => s.StateId);
+                      
 
                 entity.ToTable("cities");
 
@@ -42,7 +47,8 @@ namespace WorldAPI.DAL.Data
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_0900_ai_ci");
 
-                entity.Property(e => e.CountryId).HasColumnName("country_id");
+                entity.Property(e => e.CountryId)
+                      .HasColumnName("country_id");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -67,7 +73,8 @@ namespace WorldAPI.DAL.Data
 
             modelBuilder.Entity<Country>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(c => c.Id)
+                      .HasName("PrimaryKey_Id");
 
                 entity.ToTable("countries");
 
@@ -130,7 +137,12 @@ namespace WorldAPI.DAL.Data
 
             modelBuilder.Entity<State>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(s => s.Id)
+                      .HasName("PrimaryKey_Id");
+
+                entity.HasOne(s => s.Country)
+                      .WithMany(c =>c.States)
+                      .HasForeignKey(s => s.CountryId);
 
                 entity.ToTable("states");
 
