@@ -7,12 +7,12 @@ using WorldAPI.DAL.Models;
 
 namespace WorldAPI.DAL.Profiles
 {
-	public class StateProfile : Profile
+	public class CityStateCountryProfile : Profile
 	{
-		public StateProfile()
+		public CityStateCountryProfile()
 		{
-			CreateMap<State, StateDTO>();
-			CreateMap<State, CityStateCountryDTO>();
+			CreateMap<City, CityStateCountryDTO>()
+				.IncludeMembers(c => c.State);
 		}
 	}
 }

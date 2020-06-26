@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WorldAPI.DAL.Models
 {
@@ -13,5 +14,18 @@ namespace WorldAPI.DAL.Models
         public string CountryCode { get; set; }
         public double? Latitude { get; set; }
         public double? Longitude { get; set; }
+    }
+    //Additional Properties
+    public partial class City
+	{
+        public State State { get; set; }
+	}
+    //Get Methods for AutoMapper
+    public partial class City
+    {
+        public string GetCityName()
+        {
+            return Name;
+        }
     }
 }

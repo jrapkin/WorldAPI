@@ -37,7 +37,7 @@ namespace WorldAPI.Controllers
 		}
 
 		[HttpGet]
-		[Route("StatesByCountryId")]
+		[Route("states-by-country")]
 		public async Task<IActionResult> GetStatesByCountryId(int? id)
 		{
 			IEnumerable<State> states = await _repository.State.GetStatesInCountryAsync(id);

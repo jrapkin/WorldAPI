@@ -16,4 +16,17 @@ namespace WorldAPI.DAL.Models
         public string Emoji { get; set; }
         public string EmojiU { get; set; }
     }
+    //Additional Properties
+    public partial class Country
+	{
+       public ICollection<State> States { get; set; }
+	}
+    //Get Methods for AutoMapper
+    public partial class Country
+	{
+        public string GetCountryName()
+		{
+            return Name;
+		}
+	}
 }
