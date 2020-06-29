@@ -12,7 +12,8 @@ namespace WorldAPI.DAL.Profiles
 		public StateProfile()
 		{
 			CreateMap<State, StateDTO>();
-			CreateMap<State, CityStateCountryDTO>();
+			CreateMap<State, CityStateCountryDTO>()
+					.IncludeMembers(s => s.Country);
 		}
 	}
 }

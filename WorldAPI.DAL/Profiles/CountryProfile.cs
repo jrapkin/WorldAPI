@@ -12,6 +12,7 @@ namespace WorldAPI.DAL.Profiles
 		public CountryProfile()
 		{
 			CreateMap<Country, CountryDTO>();
+			CreateMap<Country, CityStateCountryDTO>();
 		}
 	}
 }
