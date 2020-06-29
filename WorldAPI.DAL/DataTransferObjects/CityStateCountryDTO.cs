@@ -16,5 +16,6 @@ namespace WorldAPI.DAL.DataTransferObjects
 		public string CountryCode { get; set; }
 		//country
 		public string CountryName { get; set; }
+		public string CountryCapitalCity { get; set; }
 	}
 }

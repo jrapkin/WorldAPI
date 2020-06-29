@@ -28,5 +28,9 @@ namespace WorldAPI.DAL.Models
 		{
             return Name;
 		}
+        public string GetCountryCapitalCity()
+		{
+            return Capital;
+		}
 	}
 }
