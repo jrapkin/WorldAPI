@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace WorldAPI.DAL.DataTransferObjects
+﻿namespace WorldAPI.DTO.DataTransferObjects
 {
 	public class CountryDTO
 	{

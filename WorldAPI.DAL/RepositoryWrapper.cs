@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿
 using WorldAPI.DAL.Contracts;
 using WorldAPI.DAL.Data;
+using WorldAPI.Entities.Data;
 
 namespace WorldAPI.DAL
 {
@@ -22,7 +21,7 @@ namespace WorldAPI.DAL
 			{
 				if (_country == null)
 				{
-					_country = new CountryRepository(_context);	
+					_country = new CountryRepository(_context);
 				}
 				return _country;
 			}
@@ -31,7 +30,7 @@ namespace WorldAPI.DAL
 		{
 			get
 			{
-				if(_state ==null)
+				if (_state == null)
 				{
 					_state = new StateRepository(_context);
 				}
@@ -42,7 +41,7 @@ namespace WorldAPI.DAL
 		{
 			get
 			{
-				if(_city ==null)
+				if (_city == null)
 				{
 					_city = new CityRepository(_context);
 				}

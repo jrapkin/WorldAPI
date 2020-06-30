@@ -1,11 +1,8 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using WorldAPI.DAL.DataTransferObjects;
-using WorldAPI.DAL.Models;
+using WorldAPI.DTO.DataTransferObjects;
+using WorldAPI.Entities.Models;
 
-namespace WorldAPI.DAL.Profiles
+namespace WorldAPI.Profiles
 {
 	public class StateProfile : Profile
 	{

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using WorldAPI.DAL.Contracts;
-using WorldAPI.DAL.DataTransferObjects;
-using WorldAPI.DAL.Models;
+using WorldAPI.DTO.DataTransferObjects;
+using WorldAPI.Entities.Models;
 
 namespace WorldAPI.Controllers
 {
@@ -28,11 +25,11 @@ namespace WorldAPI.Controllers
 		public async Task<IActionResult> GetCitiesByStateId(int? stateId)
 		{
 			IEnumerable<City> cities = await _repository.City.GetCitiesByState(stateId);
-			if(cities == null)
+			if (cities == null)
 			{
 				return NotFound();
 			}
-			
+
 			return Ok(_mapper.Map<IEnumerable<City>, IEnumerable<CityStateCountryDTO>>(cities));
 		}
 	}

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace WorldAPI.DAL.Contracts
+﻿namespace WorldAPI.DAL.Contracts
 {
 	public interface IRepositoryWrapper
 	{

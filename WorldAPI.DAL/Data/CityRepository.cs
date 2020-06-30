@@ -1,18 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using WorldAPI.DAL.Contracts;
-using WorldAPI.DAL.Models;
+using WorldAPI.Entities.Data;
+using WorldAPI.Entities.Models;
+
 
 namespace WorldAPI.DAL.Data
 {
 	public class CityRepository : RepositoryBase<City>, ICityRepository
 	{
 		public CityRepository(WorldDbContext worldDbContext)
-			:base(worldDbContext)
+			: base(worldDbContext)
 		{
 		}
 		public async Task<IEnumerable<City>> GetCitiesByState(int? stateId)

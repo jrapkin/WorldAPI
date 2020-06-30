@@ -1,11 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using WorldAPI.DAL.Contracts;
-using WorldAPI.DAL.Data;
+using WorldAPI.Entities.Data;
+
 
 namespace WorldAPI.DAL
 {

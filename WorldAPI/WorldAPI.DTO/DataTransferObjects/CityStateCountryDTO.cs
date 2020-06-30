@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace WorldAPI.DAL.DataTransferObjects
+﻿namespace WorldAPI.DTO.DataTransferObjects
 {
 	public class CityStateCountryDTO
 	{
@@ -11,7 +7,7 @@ namespace WorldAPI.DAL.DataTransferObjects
 		public double? Latitude { get; set; }
 		public double? Longitude { get; set; }
 		//state
-		public string StateName { get; set; }	
+		public string StateName { get; set; }
 		public string StateCode { get; set; }
 		public string CountryCode { get; set; }
 		//country

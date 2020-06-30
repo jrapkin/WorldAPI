@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using WorldAPI.DAL.Models;
+using WorldAPI.Entities.Models;
 
 namespace WorldAPI.DAL.Contracts
 {

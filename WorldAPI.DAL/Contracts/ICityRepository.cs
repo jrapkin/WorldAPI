@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using WorldAPI.DAL.Models;
+using WorldAPI.Entities.Models;
 
 namespace WorldAPI.DAL.Contracts
 {
@@ -10,5 +8,5 @@ namespace WorldAPI.DAL.Contracts
 	{
 		Task<IEnumerable<City>> GetCitiesByState(int? stateId);
 	}
-	
+
 }
