@@ -33,9 +33,14 @@ namespace WorldAPI.Entities.Data
 			{
 				entity.HasKey(c => c.Id)
 					  .HasName("PrimaryKey_Id");
+
+				entity.HasIndex(e => e.StateId)
+					  .HasName("fk_State_Id_idx");
+
 				entity.HasOne(c => c.State)
 					  .WithMany(s => s.Cities)
-					  .HasForeignKey(s => s.StateId);
+					  .HasForeignKey(s => s.StateId)
+					  .HasConstraintName("fk_State_Id");
 
 
 				entity.ToTable("cities");
@@ -47,27 +52,27 @@ namespace WorldAPI.Entities.Data
 					.HasCollation("utf8mb4_0900_ai_ci");
 
 				entity.Property(e => e.CountryId)
-					  .HasColumnName("country_id");
+					  .HasColumnName("Country_Id");
 
 				entity.Property(e => e.Id).HasColumnName("id");
 
-				entity.Property(e => e.Latitude).HasColumnName("latitude");
+				entity.Property(e => e.Latitude).HasColumnName("Latitude");
 
-				entity.Property(e => e.Longitude).HasColumnName("longitude");
+				entity.Property(e => e.Longitude).HasColumnName("Longitude");
 
 				entity.Property(e => e.Name)
-					.HasColumnName("name")
+					.HasColumnName("Name")
 					.HasColumnType("text")
 					.HasCharSet("utf8mb4")
 					.HasCollation("utf8mb4_0900_ai_ci");
 
 				entity.Property(e => e.StateCode)
-					.HasColumnName("state_code")
+					.HasColumnName("State_Code")
 					.HasColumnType("text")
 					.HasCharSet("utf8mb4")
 					.HasCollation("utf8mb4_0900_ai_ci");
 
-				entity.Property(e => e.StateId).HasColumnName("state_id");
+				entity.Property(e => e.StateId).HasColumnName("State_Id");
 			});
 
 			modelBuilder.Entity<Country>(entity =>
@@ -78,25 +83,25 @@ namespace WorldAPI.Entities.Data
 				entity.ToTable("countries");
 
 				entity.Property(e => e.Capital)
-					.HasColumnName("capital")
+					.HasColumnName("Capital")
 					.HasColumnType("text")
 					.HasCharSet("utf8mb4")
 					.HasCollation("utf8mb4_0900_ai_ci");
 
 				entity.Property(e => e.Currency)
-					.HasColumnName("currency")
+					.HasColumnName("Currency")
 					.HasColumnType("text")
 					.HasCharSet("utf8mb4")
 					.HasCollation("utf8mb4_0900_ai_ci");
 
 				entity.Property(e => e.Emoji)
-					.HasColumnName("emoji")
+					.HasColumnName("Emoji")
 					.HasColumnType("text")
 					.HasCharSet("utf8mb4")
 					.HasCollation("utf8mb4_0900_ai_ci");
 
 				entity.Property(e => e.EmojiU)
-					.HasColumnName("emojiU")
+					.HasColumnName("EmojiU")
 					.HasColumnType("text")
 					.HasCharSet("utf8mb4")
 					.HasCollation("utf8mb4_0900_ai_ci");
@@ -104,31 +109,31 @@ namespace WorldAPI.Entities.Data
 				entity.Property(e => e.Id).HasColumnName("id");
 
 				entity.Property(e => e.Iso2)
-					.HasColumnName("iso2")
+					.HasColumnName("Iso2")
 					.HasColumnType("text")
 					.HasCharSet("utf8mb4")
 					.HasCollation("utf8mb4_0900_ai_ci");
 
 				entity.Property(e => e.Iso3)
-					.HasColumnName("iso3")
+					.HasColumnName("Iso3")
 					.HasColumnType("text")
 					.HasCharSet("utf8mb4")
 					.HasCollation("utf8mb4_0900_ai_ci");
 
 				entity.Property(e => e.Name)
-					.HasColumnName("name")
+					.HasColumnName("Name")
 					.HasColumnType("text")
 					.HasCharSet("utf8mb4")
 					.HasCollation("utf8mb4_0900_ai_ci");
 
 				entity.Property(e => e.Native)
-					.HasColumnName("native")
+					.HasColumnName("Native")
 					.HasColumnType("text")
 					.HasCharSet("utf8mb4")
 					.HasCollation("utf8mb4_0900_ai_ci");
 
 				entity.Property(e => e.PhoneCode)
-					.HasColumnName("phone_code")
+					.HasColumnName("Phone_Code")
 					.HasColumnType("text")
 					.HasCharSet("utf8mb4")
 					.HasCollation("utf8mb4_0900_ai_ci");
@@ -139,30 +144,34 @@ namespace WorldAPI.Entities.Data
 				entity.HasKey(s => s.Id)
 					  .HasName("PrimaryKey_Id");
 
+				entity.HasIndex(e => e.CountryId)
+					  .HasName("fk_CountryId_idx");
+
 				entity.HasOne(s => s.Country)
 					  .WithMany(c => c.States)
-					  .HasForeignKey(s => s.CountryId);
+					  .HasForeignKey(s => s.CountryId)
+					  .HasConstraintName("fk_CountryId");
 
 				entity.ToTable("states");
 
 				entity.Property(e => e.CountryCode)
-					.HasColumnName("country_code")
+					.HasColumnName("Country_Code")
 					.HasColumnType("text")
 					.HasCharSet("utf8mb4")
 					.HasCollation("utf8mb4_0900_ai_ci");
 
-				entity.Property(e => e.CountryId).HasColumnName("country_id");
+				entity.Property(e => e.CountryId).HasColumnName("Country_Id");
 
-				entity.Property(e => e.Id).HasColumnName("id");
+				entity.Property(e => e.Id).HasColumnName("Id");
 
 				entity.Property(e => e.Name)
-					.HasColumnName("name")
+					.HasColumnName("Name")
 					.HasColumnType("text")
 					.HasCharSet("utf8mb4")
 					.HasCollation("utf8mb4_0900_ai_ci");
 
 				entity.Property(e => e.StateCode)
-					.HasColumnName("state_code")
+					.HasColumnName("State_Code")
 					.HasColumnType("text")
 					.HasCharSet("utf8mb4")
 					.HasCollation("utf8mb4_0900_ai_ci");
